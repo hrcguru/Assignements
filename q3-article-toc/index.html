@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article with Sticky Table of Contents</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <div class="container">
+        <main id="main-content" class="content-grid">
+            <article class="article-content">
+                <h1>Understanding Web Accessibility</h1>
+                
+                <figure class="article-figure">
+                    <img src="assets/hero.png" alt="Diagram showing web accessibility principles including perceivable, operable, understandable, and robust" width="800" height="400">
+                    <figcaption>Web Accessibility encompasses multiple principles to ensure inclusive user experiences</figcaption>
+                </figure>
+                
+                <section id="introduction">
+                    <h2>Introduction to Web Accessibility</h2>
+                    <p>Web accessibility means that websites, tools, and technologies are designed and developed so that people with disabilities can use them. More specifically, people can perceive, understand, navigate, and interact with the Web.</p>
+                    <p>Accessibility supports social inclusion for people with disabilities as well as others, such as older people, people in rural areas, and people in developing countries.</p>
+                </section>
+                
+                <section id="importance">
+                    <h2>Why Accessibility Matters</h2>
+                    <p>Accessibility is essential for developers and organizations that want to create high-quality websites and web tools, and not exclude people from using their products and services.</p>
+                    
+                    <h3>Legal Requirements</h3>
+                    <p>Many countries have laws requiring digital accessibility. The Americans with Disabilities Act (ADA) and Section 508 in the US, and the European Accessibility Act in the EU are examples of such legislation.</p>
+                    
+                    <h3>Business Benefits</h3>
+                    <p>Accessible websites have better search results, reduced maintenance costs, and increased audience reach. They also demonstrate corporate social responsibility.</p>
+                </section>
+                
+                <section id="guidelines">
+                    <h2>WCAG Guidelines</h2>
+                    <p>The Web Content Accessibility Guidelines (WCAG) are developed through the W3C process in cooperation with individuals and organizations around the world.</p>
+                    
+                    <h3>POUR Principles</h3>
+                    <p>WCAG guidelines are organized around four principles often abbreviated as POUR:</p>
+                    <ul>
+                        <li><strong>Perceivable</strong>: Information and user interface components must be presentable to users in ways they can perceive.</li>
+                        <li><strong>Operable</strong>: User interface components and navigation must be operable.</li>
+                        <li><strong>Understandable</strong>: Information and the operation of user interface must be understandable.</li>
+                        <li><strong>Robust</strong>: Content must be robust enough that it can be interpreted reliably by a wide variety of user agents, including assistive technologies.</li>
+                    </ul>
+                </section>
+                
+                <section id="implementation">
+                    <h2>Practical Implementation</h2>
+                    <p>Implementing accessibility involves multiple aspects of web development, from semantic HTML to ARIA attributes and keyboard navigation.</p>
+                    
+                    <h3>Semantic HTML</h3>
+                    <p>Using proper HTML elements provides inherent accessibility. Elements like &lt;nav&gt;, &lt;main&gt;, &lt;article&gt;, and heading tags provide structure and meaning.</p>
+                    
+                    <h3>Keyboard Navigation</h3>
+                    <p>All functionality should be available using a keyboard. This includes proper focus management and logical tab order.</p>
+                </section>
+                
+                <section id="conclusion">
+                    <h2>Conclusion</h2>
+                    <p>Web accessibility is not just a technical requirement but a fundamental aspect of creating an inclusive digital world. By following established guidelines and testing with real users, we can build experiences that work for everyone.</p>
+                    <p>The journey toward accessibility is ongoing, but each step makes the web a more equitable place.</p>
+                </section>
+            </article>
+            
+            <aside class="toc-sidebar">
+                <nav class="toc-nav" aria-label="Table of Contents">
+                    <h2>Table of Contents</h2>
+                    <ul>
+                        <li><a href="#introduction">Introduction to Web Accessibility</a></li>
+                        <li><a href="#importance">Why Accessibility Matters</a>
+                            <ul>
+                                <li><a href="#importance">Legal Requirements</a></li>
+                                <li><a href="#importance">Business Benefits</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#guidelines">WCAG Guidelines</a>
+                            <ul>
+                                <li><a href="#guidelines">POUR Principles</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#implementation">Practical Implementation</a>
+                            <ul>
+                                <li><a href="#implementation">Semantic HTML</a></li>
+                                <li><a href="#implementation">Keyboard Navigation</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#conclusion">Conclusion</a></li>
+                    </ul>
+                </nav>
+            </aside>
+        </main>
+    </div>
+</body>
+</html>
