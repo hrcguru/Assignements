@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanilla JS DOM Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .demo-box {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #f7df1e;
+        }
+
+        .title-display {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #495057;
+            padding: 15px;
+            background: white;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid #dee2e6;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #f7df1e 0%, #d4bb0f 100%);
+            color: #333;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(247, 223, 30, 0.4);
+        }
+
+        .stats {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #dee2e6;
+        }
+
+        .stats p {
+            margin: 8px 0;
+            color: #495057;
+        }
+
+        .stats strong {
+            color: #dc3545;
+            font-size: 1.1rem;
+        }
+
+        .explanation {
+            background: #e9ecef;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Vanilla JS DOM Manipulation</h1>
+            <p>Direct DOM updates without Virtual DOM</p>
+        </div>
+        
+        <div class="content">
+            <div class="demo-box">
+                <div class="title-display" id="vanillaTitle">Vanilla JS DOM Demo</div>
+                <button class="btn" id="updateButton">Change Title (Vanilla JS)</button>
+                
+                <div class="stats">
+                    <p>Direct DOM Manipulations: <strong id="updateCount">0</strong></p>
+                    <p>Actual DOM Updates: <strong id="domUpdateCount">0</strong></p>
+                </div>
+            </div>
+
+            <div class="explanation">
+                <h3>How This Works:</h3>
+                <p>Each click directly manipulates the DOM, causing immediate browser repaints. 
+                This is less efficient than React's Virtual DOM which batches updates.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
