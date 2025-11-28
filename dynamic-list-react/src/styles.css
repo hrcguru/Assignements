@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.app {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.app-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 30px;
+  text-align: center;
+}
+
+.app-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.app-header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.list-container {
+  padding: 40px;
+}
+
+.tech-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.tech-item {
+  background: #f8f9fa;
+  padding: 20px 25px;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #495057;
+  border-left: 5px solid #667eea;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.tech-item:hover {
+  transform: translateX(10px);
+  background: #e9ecef;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.tech-item:nth-child(1) {
+  border-left-color: #61dafb; /* React blue */
+}
+
+.tech-item:nth-child(2) {
+  border-left-color: #f7df1e; /* JavaScript yellow */
+}
+
+.tech-item:nth-child(3) {
+  border-left-color: #264de4; /* CSS blue */
+}
+
+.app-footer {
+  background: #f8f9fa;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #dee2e6;
+  color: #6c757d;
+  font-weight: 600;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .app-header h1 {
+    font-size: 2rem;
+  }
+  
+  .tech-item {
+    font-size: 1.1rem;
+    padding: 15px 20px;
+  }
+  
+  .list-container {
+    padding: 30px 20px;
+  }
+}
