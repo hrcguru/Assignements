@@ -1,0 +1,13 @@
+Issues Fixed:
+
+Missing Prop in UserProfile Component: In the App component, the UserProfile component was being called without passing the user object as a prop.
+
+Incorrect Variable Reference: Inside the UserProfile component, the code was trying to access user.name and user.email directly, but it should have been props.user.name and props.user.email since the user object is passed through props.
+
+Why it works now:
+
+The App component passes the user object as a prop to UserProfile
+
+The UserProfile component correctly accesses the user data through props.user
+
+The conditional rendering {props.user && ...} ensures the user details only display when the user prop exists
