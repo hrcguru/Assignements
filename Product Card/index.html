@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Product Cards</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .main-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 900px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            height: fit-content;
+        }
+
+        .form-title {
+            color: #2575fc;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #2575fc;
+            box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.2);
+        }
+
+        .error {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        button {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(37, 117, 252, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .products-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #f0f2f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            position: relative;
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #e74c3c;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-details {
+            padding: 20px;
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .current-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2575fc;
+            margin-right: 10px;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 16px;
+        }
+
+        .no-products {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .no-products h3 {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .no-products p {
+            color: #999;
+        }
+
+        .instructions {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        .instructions h3 {
+            color: #2575fc;
+            margin-bottom: 15px;
+        }
+
+        .instructions ul {
+            padding-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Dynamic Product Cards</h1>
+        <p class="subtitle">Create beautiful product cards with custom properties</p>
+    </header>
+
+    <div class="instructions">
+        <h3>How to use this application:</h3>
+        <ul>
+            <li>Fill out the form with product details</li>
+            <li>Name must be a non-empty string</li>
+            <li>Price must be a positive number</li>
+            <li>Image URL must be a valid URL starting with "http"</li>
+            <li>Discount (optional) must be between 0 and 100</li>
+            <li>Click "Add Product" to create a new product card</li>
+        </ul>
+    </div>
+
+    <div class="main-container">
+        <div class="form-container">
+            <h2 class="form-title">Add New Product</h2>
+            <form id="productForm">
+                <div class="form-group">
+                    <label for="name">Product Name*</label>
+                    <input type="text" id="name" placeholder="Enter product name">
+                    <div class="error" id="nameError">Product name is required</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="price">Price ($)*</label>
+                    <input type="number" id="price" placeholder="Enter product price" min="0">
+                    <div class="error" id="priceError">Price must be a positive number</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="image">Image URL*</label>
+                    <input type="text" id="image" placeholder="Enter image URL">
+                    <div class="error" id="imageError">Image URL must be valid (start with http)</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="discount">Discount (%)</label>
+                    <input type="number" id="discount" placeholder="Enter discount percentage" min="0" max="100">
+                    <div class="error" id="discountError">Discount must be between 0 and 100</div>
+                </div>
+                
+                <button type="submit">Add Product</button>
+            </form>
+        </div>
+        
+        <div class="products-container" id="productsContainer">
+            <!-- Product cards will be dynamically added here -->
+            <div class="no-products">
+                <h3>No Products Yet</h3>
+                <p>Add your first product using the form on the left</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const productForm = document.getElementById('productForm');
+            const productsContainer = document.getElementById('productsContainer');
+            const noProductsMessage = document.querySelector('.no-products');
+            
+            // Sample initial products
+            const initialProducts = [
+                {
+                    name: "Modern Wireless Headphones",
+                    price: 89.99,
+                    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    discount: 15
+                },
+                {
+                    name: "Smartphone with Advanced Camera",
+                    price: 699.99,
+                    image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    discount: 0
+                },
+                {
+                    name: "Ergonomic Office Chair",
+                    price: 249.99,
+                    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    discount: 20
+                }
+            ];
+            
+            // Initialize with sample products
+            initialProducts.forEach(product => {
+                createProductCard(product);
+            });
+            updateNoProductsMessage();
+            
+            productForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('name').value.trim();
+                const price = parseFloat(document.getElementById('price').value);
+                const image = document.getElementById('image').value.trim();
+                const discount = document.getElementById('discount').value ? 
+                    parseFloat(document.getElementById('discount').value) : 0;
+                
+                // Validate inputs
+                const isValid = validateInputs(name, price, image, discount);
+                
+                if (isValid) {
+                    // Create new product object
+                    const newProduct = { name, price, image, discount };
+                    
+                    // Create product card
+                    createProductCard(newProduct);
+                    
+                    // Reset form
+                    productForm.reset();
+                    
+                    // Clear any previous error messages
+                    clearErrors();
+                    
+                    // Update no products message visibility
+                    updateNoProductsMessage();
+                }
+            });
+            
+            function validateInputs(name, price, image, discount) {
+                let isValid = true;
+                
+                // Validate name
+                if (!name) {
+                    showError('nameError', 'Product name is required');
+                    isValid = false;
+                }
+                
+                // Validate price
+                if (!price || price <= 0 || isNaN(price)) {
+                    showError('priceError', 'Price must be a positive number');
+                    isValid = false;
+                }
+                
+                // Validate image URL
+                if (!image || !image.startsWith('http')) {
+                    showError('imageError', 'Image URL must be valid (start with http)');
+                    isValid = false;
+                }
+                
+                // Validate discount
+                if (discount && (discount < 0 || discount > 100 || isNaN(discount))) {
+                    showError('discountError', 'Discount must be between 0 and 100');
+                    isValid = false;
+                }
+                
+                return isValid;
+            }
+            
+            function showError(elementId, message) {
+                const errorElement = document.getElementById(elementId);
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+            }
+            
+            function clearErrors() {
+                const errorElements = document.querySelectorAll('.error');
+                errorElements.forEach(element => {
+                    element.style.display = 'none';
+                });
+            }
+            
+            function createProductCard(product) {
+                // Remove no products message if it exists
+                if (noProductsMessage && noProductsMessage.parentNode) {
+                    noProductsMessage.remove();
+                }
+                
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                
+                // Calculate discounted price if applicable
+                const discountedPrice = product.discount > 0 ? 
+                    (product.price * (1 - product.discount / 100)).toFixed(2) : null;
+                
+                // Create discount badge if discount exists
+                const discountBadge = product.discount > 0 ? 
+                    `<div class="discount-badge">${product.discount}% OFF</div>` : '';
+                
+                productCard.innerHTML = `
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='data:image/svg+xml;charset=UTF-8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22 viewBox=%220 0 200 200%22><rect fill=%22%23f0f2f5%22 width=%22200%22 height=%22200%22/><text fill=%22%23999%22 font-family=%22sans-serif%22 font-size=%2218%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22>Image not available</text></svg>'; this.style.objectFit='contain'; this.style.padding='30px';">
+                        ${discountBadge}
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">${product.name}</h3>
+                        <div class="product-price">
+                            <span class="current-price">$${discountedPrice || product.price.toFixed(2)}</span>
+                            ${discountedPrice ? `<span class="original-price">$${product.price.toFixed(2)}</span>` : ''}
+                        </div>
+                    </div>
+                `;
+                
+                productsContainer.appendChild(productCard);
+            }
+            
+            function updateNoProductsMessage() {
+                if (productsContainer.children.length === 0) {
+                    productsContainer.appendChild(noProductsMessage);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
