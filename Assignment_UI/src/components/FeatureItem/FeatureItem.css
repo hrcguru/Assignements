@@ -1,0 +1,14 @@
+.feature-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.checkmark {
+  color: #10b981;
+  font-weight: bold;
+  margin-right: 12px;
+  font-size: 16px;
+}
