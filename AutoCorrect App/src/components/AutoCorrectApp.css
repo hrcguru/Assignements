@@ -1,0 +1,177 @@
+/* components/AutoCorrectApp.css */
+.auto-correct-app {
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.app-header {
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  padding: 24px 32px;
+  text-align: center;
+}
+
+.app-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.app-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.app-container {
+  padding: 32px;
+}
+
+.input-section {
+  margin-bottom: 32px;
+}
+
+.input-label {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.text-input {
+  width: 100%;
+  padding: 18px;
+  border: 2px solid #e1e5eb;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  resize: vertical;
+  transition: all 0.3s ease;
+  line-height: 1.6;
+}
+
+.text-input:focus {
+  outline: none;
+  border-color: #6a11cb;
+  box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.1);
+}
+
+.text-input::placeholder {
+  color: #aaa;
+}
+
+.input-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.preview-section {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 24px;
+  margin-bottom: 32px;
+  border: 1px solid #e9ecef;
+}
+
+.preview-title {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.title-icon {
+  margin-right: 10px;
+}
+
+.dictionary-section {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #e9ecef;
+}
+
+.dictionary-title {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.corrections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.correction-item {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 10px 14px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.wrong-word {
+  color: #e74c3c;
+  font-weight: 600;
+  text-decoration: line-through;
+  margin-right: 8px;
+}
+
+.arrow {
+  color: #7f8c8d;
+  margin: 0 8px;
+  font-weight: 300;
+}
+
+.correct-word {
+  color: #27ae60;
+  font-weight: 600;
+}
+
+.instructions {
+  background-color: #e3f2fd;
+  border-radius: 10px;
+  padding: 20px;
+  border-left: 4px solid #2196f3;
+}
+
+.instructions h3 {
+  color: #1565c0;
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+}
+
+.instructions ul {
+  padding-left: 20px;
+  color: #333;
+}
+
+.instructions li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .app-header h1 {
+    font-size: 2rem;
+  }
+  
+  .app-container {
+    padding: 20px;
+  }
+  
+  .corrections-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
